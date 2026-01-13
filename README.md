@@ -1,1 +1,1 @@
-Small java app to learn basic aws.
+Small java app to learn basic AWS.
