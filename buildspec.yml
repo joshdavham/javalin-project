@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+  build:
+    commands:
+      - echo "Running unit tests..."
+      - ./gradlew test
+  post_build:
+    commands:
+      - echo "Beep beep, tests completed!"
+
+reports:
+  junit-reports:
+    files:
+      - 'build/test-results/test/*.xml'
+    file-format: JunitXml
