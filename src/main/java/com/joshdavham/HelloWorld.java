@@ -4,8 +4,11 @@ import io.javalin.Javalin;
 
 public class HelloWorld {
     static void main() {
-        var app = Javalin.create(/*config*/)
-                .get("/", ctx -> ctx.result("Hello World"))
+
+        String string = MySpecialClass.makeSparkly("Hello World");
+
+        var app = Javalin.create()
+                .get("/", ctx -> ctx.result(string))
                 .start(7070);
     }
 }
