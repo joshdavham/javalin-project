@@ -3,12 +3,20 @@ package com.joshdavham;
 import io.javalin.Javalin;
 
 public class HelloWorld {
-    static void main() {
+    private Javalin app;
 
+    public HelloWorld() {
         String string = MySpecialClass.makeSparkly("Hello World");
 
-        var app = Javalin.create()
-                .get("/", ctx -> ctx.result(string))
-                .start(7070);
+        this.app = Javalin.create()
+                .get("/", ctx -> ctx.result(string));
+    }
+
+    public Javalin getApp() {
+        return app;
+    }
+
+    public static void main(String[] args) {
+        new HelloWorld().getApp().start(7070);
     }
 }
