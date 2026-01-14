@@ -10,7 +10,7 @@ phases:
       - nohup ./gradlew run &
       - sleep 30  # Wait for server to start
       - echo "Testing endpoint..."
-      - curl -f http://localhost:7070/ || exit 1
+      - wget --tries=1 --retry-connrefused --waitretry=1 http://localhost:7070/
       - echo "Endpoint test passed!"
   post_build:
     commands:
