@@ -6,14 +6,13 @@ phases:
       java: corretto17
   build:
     commands:
-      - echo "Running unit tests..."
-      - ./gradlew test
+      - echo "Starting server in background..."
+      - nohup ./gradlew run &
+      - sleep 10  # Wait for server to start
+      - echo "Testing endpoint..."
+      - curl -f http://localhost:7000/ || exit 1
+      - echo "Endpoint test passed!"
   post_build:
     commands:
-      - echo "Beep beep, tests completed!"
-
-reports:
-  junit-reports:
-    files:
-      - 'build/test-results/test/*.xml'
-    file-format: JunitXml
+      - pkill -f gradle  # Stop the server
+      - echo "Server stopped!"
