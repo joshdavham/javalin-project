@@ -8,7 +8,6 @@ phases:
     commands:
       - echo "Starting server in background..."
       - nohup ./gradlew run &
-      - sleep 30  # Wait for server to start
       - echo "Testing endpoint..."
       - wget --tries=1 --retry-connrefused --waitretry=1 http://localhost:7070/
       - echo "Endpoint test passed!"
