@@ -1,9 +1,14 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group = 'com.joshdavham'
 version = '1.0-SNAPSHOT'
+
+application {
+    mainClass = 'com.joshdavham.HelloWorld'
+}
 
 repositories {
     mavenCentral()
